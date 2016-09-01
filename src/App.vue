@@ -1,7 +1,10 @@
 <template>
 <section>
-  <div class="item" v-for="(index, item) in imgs" style="width:{{item.width*200/item.height}}px;">
-     <img :src="item['url']" alt="{{index}}">
+  <div class="item" v-for="(index, item) in imgs" 
+    :style="[{width: item.width*200/item.height + 'px'},{flexGrow: item.width*200/item.height}]">
+    <i :style="{paddingBottom: item.height/item.width * 100 + '%'}">
+    </i>
+    <img :src="item['url']" alt="{{index}}">
   </div>
 </section>
 </template>
@@ -14,23 +17,21 @@
       flex-grow: 999999999;
     }
     .item {
+      position: relative;
       flex-grow: 1;
-      height: 200px;
       margin: 2px;
       background-color: violet;
-      // &:nth-last-child(1){
-      //   flex-grow:0;
-      // }
-      // &:nth-last-child(2){
-      //   flex-grow:0;
-      // }
-    }
-    img {
-      height:200px;
-      min-width: 100%;
-      max-width: 100%;
-      object-fit: cover;
-      vertical-align: bottom;
+      i{
+        display: block;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border: 0;
+        
+        vertical-align: bottom;
+      }
     }
   }
 </style>
