@@ -1,6 +1,6 @@
 <template>
 <section>
-  <div class="item" v-for="(index, item) in imgs">
+  <div class="item" v-for="(index, item) in imgs" style="width:{{item.width*200/item.height}}px;">
      <img :src="item['url']" alt="{{index}}">
   </div>
 </section>
@@ -9,11 +9,21 @@
   section{
     display: flex;
     flex-wrap: wrap;
+    &::after {
+      content: '';
+      flex-grow: 999999999;
+    }
     .item {
       flex-grow: 1;
       height: 200px;
       margin: 2px;
       background-color: violet;
+      // &:nth-last-child(1){
+      //   flex-grow:0;
+      // }
+      // &:nth-last-child(2){
+      //   flex-grow:0;
+      // }
     }
     img {
       height:200px;
